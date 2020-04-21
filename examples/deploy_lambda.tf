@@ -1,10 +1,3 @@
-# AWS Lambda packager Terraform module
-
-Terraform module which creates and deploy AWS Lambda with required python modules.
-
-## Usage
-
-```hcl
 module "example" {
   source  = "dntsk/lambda-packager/aws"
 
@@ -18,4 +11,3 @@ module "example" {
     VAR   = "example_variable"
   }
 }
-```
