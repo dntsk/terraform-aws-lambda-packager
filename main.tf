@@ -82,7 +82,7 @@ data "aws_iam_policy_document" "lambda_policy" {
 }
 
 resource "aws_iam_role_policy_attachment" "logs_policy" {
-  role       = aws_iam_role.lambda_policy.name
+  role       = aws_iam_role.iam_role_policy.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
