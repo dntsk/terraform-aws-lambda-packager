@@ -6,7 +6,7 @@ Terraform module which creates and deploy AWS Lambda with required python module
 
 ```hcl
 module "example" {
-  source = "dntsk/lambda-packager"
+  source  = "dntsk/lambda-packager/aws"
 
   source_dir = "lambdas/example"
   filename   = "example.py"
