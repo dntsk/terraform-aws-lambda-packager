@@ -2,6 +2,10 @@ resource "null_resource" "tmp" {
   provisioner "local-exec" {
     command = "mkdir -p ${var.tmp_dir}/${var.name}"
   }
+
+  triggers = {
+    the_trigger = timestamp()
+  }
 }
 
 resource "null_resource" "copy" {
@@ -10,6 +14,10 @@ resource "null_resource" "copy" {
   }
 
   depends_on = [null_resource.tmp]
+
+  triggers = {
+    the_trigger = timestamp()
+  }
 }
 
 resource "null_resource" "pip" {
@@ -18,6 +26,10 @@ resource "null_resource" "pip" {
   }
 
   depends_on = [null_resource.copy]
+
+  triggers = {
+    the_trigger = timestamp()
+  }
 }
 
 data "archive_file" "lambda_zip" {
@@ -26,6 +38,11 @@ data "archive_file" "lambda_zip" {
   output_path = "/tmp/${var.name}.zip"
 
   depends_on = [null_resource.pip]
+
+  triggers = {
+    the_trigger = timestamp()
+  }
+
 }
 
 resource "aws_lambda_function" "lambda" {
