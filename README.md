@@ -2,6 +2,10 @@
 
 Terraform module which creates and deploy AWS Lambda with required python modules.
 
+## Supported Terraform versions
+
+* Terraform 0.12. Pin version to `~> v0.1`
+
 ## Usage
 
 ```hcl
@@ -19,3 +23,7 @@ module "example" {
   }
 }
 ```
+
+## License
+
+MIT Licensed. See LICENSE for full details.
