@@ -38,11 +38,6 @@ data "archive_file" "lambda_zip" {
   output_path = "/tmp/${var.name}.zip"
 
   depends_on = [null_resource.pip]
-
-  triggers = {
-    the_trigger = timestamp()
-  }
-
 }
 
 resource "aws_lambda_function" "lambda" {
