@@ -94,6 +94,7 @@ data "aws_iam_policy_document" "lambda_policy" {
     actions = [
       "logs:CreateLogStream",
       "logs:PutLogEvents",
+      "ec2:CreateNetworkInterface"
     ]
   }
 }
