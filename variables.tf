@@ -49,4 +49,10 @@ variable "vpc_security_group_ids" {
   default = []
 }
 
+variable "timeout" {
+  type = string
+  description = "The amount of time your Lambda Function has to run in seconds."
+  default = 300
+}
+
 data "aws_region" "current" {}

@@ -5,6 +5,7 @@ resource "aws_lambda_function" "lambda" {
   handler          = var.handler
   runtime          = var.runtime
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256
+  timeout          = var.timeout
 
   vpc_config {
     security_group_ids = var.vpc_security_group_ids
