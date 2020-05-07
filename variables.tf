@@ -37,4 +37,16 @@ variable "tmp_dir" {
   default     = "/tmp/lambda_pack"
 }
 
+variable "vpc_subnet_ids" {
+  type = list(string)
+  description = "List of subnets ids for VPC"
+  default = []
+}
+
+variable "vpc_security_group_ids" {
+  type = list(string)
+  description = "List of security groups ids for VPC"
+  default = []
+}
+
 data "aws_region" "current" {}
