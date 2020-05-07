@@ -36,6 +36,9 @@ data "aws_iam_policy_document" "policy" {
     effect = "Allow"
     resources = ["*"]
 
-    actions = ["ec2:CreateNetworkInterface"]
+    actions = [
+      "ec2:CreateNetworkInterface",
+      "ec2:DescribeNetworkInterfaces"
+    ]
   }
 }
