@@ -59,16 +59,16 @@ variable "timeout" {
 
 locals {
   partition_map = map(
-  "cn-north-1", "aws-cn",
-  "cn-northwest-1", "aws-cn"
+    "cn-north-1", "aws-cn",
+    "cn-northwest-1", "aws-cn"
   )
   iam_map = map(
-  "cn-north-1", "amazonaws.com.cn",
-  "cn-northwest-1", "amazonaws.com.cn"
+    "cn-north-1", "amazonaws.com.cn",
+    "cn-northwest-1", "amazonaws.com.cn"
   )
 }
 
 locals {
-  aws_partition = lookup(local.partition_map, data.aws_region.current.name, "aws")
+  aws_partition           = lookup(local.partition_map, data.aws_region.current.name, "aws")
   aws_iam_pricipal_suffix = lookup(local.iam_map, data.aws_region.current.name, "amazonaws.com")
 }

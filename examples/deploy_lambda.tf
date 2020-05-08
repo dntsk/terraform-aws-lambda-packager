@@ -1,5 +1,5 @@
 module "example" {
-  source  = "dntsk/lambda-packager/aws"
+  source = "dntsk/lambda-packager/aws"
 
   source_dir = "lambda"
   filename   = "example.py"
@@ -8,6 +8,6 @@ module "example" {
   name = "example"
 
   environment_variables = {
-    VAR   = "example_variable"
+    VAR = "example_variable"
   }
 }
