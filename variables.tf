@@ -1,3 +1,5 @@
+data "aws_region" "current" {}
+
 variable "source_dir" {
   description = "Lambda source directory"
   type        = string
@@ -38,21 +40,35 @@ variable "tmp_dir" {
 }
 
 variable "vpc_subnet_ids" {
-  type = list(string)
+  type        = list(string)
   description = "List of subnets ids for VPC"
-  default = []
+  default     = []
 }
 
 variable "vpc_security_group_ids" {
-  type = list(string)
+  type        = list(string)
   description = "List of security groups ids for VPC"
-  default = []
+  default     = []
 }
 
 variable "timeout" {
-  type = string
+  type        = string
   description = "The amount of time your Lambda Function has to run in seconds."
-  default = 300
+  default     = 300
 }
 
-data "aws_region" "current" {}
+locals {
+  partition_map = map(
+  "cn-north-1", "aws-cn",
+  "cn-northwest-1", "aws-cn"
+  )
+  iam_map = map(
+  "cn-north-1", "amazonaws.com.cn",
+  "cn-northwest-1", "amazonaws.com.cn"
+  )
+}
+
+locals {
+  aws_partition = lookup(local.partition_map, data.aws_region.current.name, "aws")
+  aws_iam_pricipal_suffix = lookup(local.iam_map, data.aws_region.current.name, "amazonaws.com")
+}
