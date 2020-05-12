@@ -16,6 +16,12 @@ variable "runtime" {
   default     = "python3.7"
 }
 
+variable "iam_role_arn" {
+  description = "IAM role ARN"
+  type        = string
+  default     = ""
+}
+
 variable "handler" {
   description = "Lambda handler"
   type        = string
