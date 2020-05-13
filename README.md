@@ -10,7 +10,7 @@ Terraform module which creates and deploy AWS Lambda with required python module
 
 * Terraform 0.12. Pin version to `~> v0.1`
 
-## Usage
+## Usage with built in IAM role
 
 ```hcl
 module "example" {
@@ -19,6 +19,27 @@ module "example" {
   source_dir = "lambda"
   filename   = "example.py"
   handler    = "example.lambda_handler"
+
+  name = "example"
+
+  environment_variables = {
+    VAR   = "example_variable"
+  }
+}
+```
+
+## Usage with custom IAM role
+
+```hcl
+module "example" {
+  source  = "dntsk/lambda-packager/aws"
+
+  source_dir = "lambda"
+  filename   = "example.py"
+  handler    = "example.lambda_handler"
+
+  custom_iam_role = true
+  iam_role_arn    = aws_iam_role.YOUR_ROLE.arn
 
   name = "example"
 
