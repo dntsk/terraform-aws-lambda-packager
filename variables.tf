@@ -16,8 +16,14 @@ variable "runtime" {
   default     = "python3.7"
 }
 
+variable "custom_iam_role" {
+  description = "Provide true if you want to have your own IAM role in Lambda function"
+  default     = false
+  type        = bool
+}
+
 variable "iam_role_arn" {
-  description = "IAM role ARN"
+  description = "IAM role ARN. Available if custom_iam_role set to true"
   type        = string
   default     = ""
 }

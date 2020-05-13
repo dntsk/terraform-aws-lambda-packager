@@ -1,5 +1,5 @@
 locals {
-  iam_role = var.iam_role_arn == "" ? join("", aws_iam_role.iam_role.*.arn) : var.iam_role_arn
+  iam_role = var.custom_iam_role ? var.iam_role_arn : join("", aws_iam_role.iam_role.*.arn)
 }
 
 resource "aws_lambda_function" "lambda" {
