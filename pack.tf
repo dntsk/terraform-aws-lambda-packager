@@ -1,6 +1,6 @@
 resource "null_resource" "tmp" {
   provisioner "local-exec" {
-    command = "mkdir -p ${var.tmp_dir}/${var.name}"
+    command = "rm -rf ${var.tmp_dir}/${var.name}; mkdir -p ${var.tmp_dir}/${var.name}"
   }
 
   triggers = {
