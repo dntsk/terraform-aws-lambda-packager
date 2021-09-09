@@ -70,14 +70,14 @@ variable "timeout" {
 }
 
 locals {
-  partition_map = tomap(
-    "cn-north-1", "aws-cn",
-    "cn-northwest-1", "aws-cn"
-  )
-  iam_map = tomap(
-    "cn-north-1", "amazonaws.com.cn",
-    "cn-northwest-1", "amazonaws.com.cn"
-  )
+  partition_map = tomap({
+    "cn-north-1" = "aws-cn"
+    "cn-northwest-1" = "aws-cn"
+  })
+  iam_map = tomap({
+    "cn-north-1" = "amazonaws.com.cn"
+    "cn-northwest-1" = "amazonaws.com.cn"
+  })
 }
 
 locals {
